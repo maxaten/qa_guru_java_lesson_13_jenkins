@@ -10,10 +10,10 @@ dependencies {
 
     testImplementation (
             "com.codeborne:selenide:6.16.0",
-            "org.junit.jupiter:junit-jupiter:5.10.0",
+            "org.junit.jupiter:junit-jupiter:5.9.3",
             "com.github.javafaker:javafaker:1.0.2")
 
-    testRuntimeOnly ("org.slf4j:slf4j-simple:1.7.36")
+    testRuntimeOnly ("org.slf4j:slf4j-simple:2.0.7")
 }
 
 tasks.withType(JavaCompile) {
@@ -22,9 +22,12 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Test) {
     useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed", "standardOut", "standardError"
-        exceptionFormat "full"
+
+    testLogging  {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
     }
 }
 
@@ -37,6 +40,6 @@ tasks.withType(Test) {
 
 task registration_form_test(type: Test){
     useJUnitPlatform{
-        includeTags("registration_form_test")
+        includeTags("registration")
     }
 }

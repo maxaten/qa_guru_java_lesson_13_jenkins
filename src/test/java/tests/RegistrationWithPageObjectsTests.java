@@ -8,7 +8,7 @@ import pages.components.ModalContentComponent;
 import utils.custom.RandomUtils;
 
 
-@Tag("registration_form_test")
+@Tag("registration")
 public class RegistrationWithPageObjectsTests extends TestBase {
 
 
