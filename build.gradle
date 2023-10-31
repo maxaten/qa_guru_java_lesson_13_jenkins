@@ -28,12 +28,12 @@ tasks.withType(Test) {
     }
 }
 
-test {
-    useJUnitPlatform {
-        String[] tags = project.hasProperty('includeTags') ? project.includeTags.split(',') : []
-        includeTags tags
-    }
-}
+//test {
+//    useJUnitPlatform {
+//        String[] tags = project.hasProperty('includeTags') ? project.includeTags.split(',') : []
+//        includeTags tags
+//    }
+//}
 
 task registration_form_test(type: Test){
     useJUnitPlatform{
