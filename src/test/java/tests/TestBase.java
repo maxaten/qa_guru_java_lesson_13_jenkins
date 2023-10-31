@@ -12,8 +12,8 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
-//        Configuration.browser = "chrome";
-//        Configuration.browserVersion = "114.0.5735.90";
+        Configuration.browser = "chrome";
+        Configuration.browserVersion = "114.0.5735.90";
     }
 
     @AfterAll

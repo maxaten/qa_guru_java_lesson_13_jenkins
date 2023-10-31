@@ -7,22 +7,39 @@ repositories {
 }
 
 dependencies {
+
     testImplementation (
-            "com.codeborne:selenide:6.19.0",
+            "com.codeborne:selenide:6.19.1",
             "org.junit.jupiter:junit-jupiter:5.10.0",
             "com.github.javafaker:javafaker:1.0.2")
 
-    testRuntimeOnly (
-            "org.slf4j:slf4j-simple:1.7.29")
+    testRuntimeOnly ("org.slf4j:slf4j-simple:2.0.7")
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+//tasks.withType(JavaCompile) {
+//    options.encoding = 'UTF-8'
+//}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    testLogging  {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
 
-test {
-    useJUnitPlatform {
-        String[] tags = project.hasProperty('includeTags') ? project.includeTags.split(',') : []
-        includeTags tags
+//test {
+//    useJUnitPlatform {
+//        String[] tags = project.hasProperty('includeTags') ? project.includeTags.split(',') : []
+//        includeTags tags
+//    }
+//}
+
+task registration_form_test(type: Test){
+    useJUnitPlatform{
+        includeTags("registration")
     }
 }
