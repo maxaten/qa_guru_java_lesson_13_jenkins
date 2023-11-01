@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 import utils.custom.FooterAndAdd;
 
@@ -31,10 +32,12 @@ public class RegistrationPage {
                     city = $("#stateCity-wrapper"),
                     submitButton = $("#submit");
 
+    @Step("Открываем страницу регистрации")
     public RegistrationPage openPage(){
         open(uri);
         return this;
     }
+
 
     public RegistrationPage checkTitle(String value){
         titleLabel.shouldHave(text(value));
@@ -46,70 +49,84 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Ввод имени {value} в поле 'first name'")
     public RegistrationPage setFirstName(String value){
         firstNameInput.setValue(value);
         return this;
     }
 
+    @Step("Ввод фамилии {value} в поле 'last name'")
     public RegistrationPage setLastName(String value){
         lastNameInput.setValue(value);
         return this;
     }
 
+    @Step("Ввод почты {value} в поле 'email'")
     public RegistrationPage setUserEmail(String value){
         userEmailInput.setValue(value);
         return this;
     }
 
+    @Step("Выбор пола {value} в поле 'gender'")
     public RegistrationPage setGender(String value){
         genderWrapper.$(byText(value)).click();
         return this;
     }
 
+    @Step("Ввод номера {value} в поле 'number'")
     public RegistrationPage setUserNumber(String value){
         userNumberInput.setValue(value);
         return this;
     }
 
+    @Step("Ввод даты рождения {day} {month} {year} в поле 'birthday'")
     public RegistrationPage setDateBirth(String day, String month, String year){
         dateBirth.click();
         calendar.setDate(day, month, year);
         return this;
     }
 
+    @Step("Выбор дисциплины {value} в поле 'subjects'")
     public RegistrationPage setSubjectsInput(String value){
         subjectsInput.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Выбор хобби {value} в поле 'hobbies'")
     public RegistrationPage setHobbies(String value){
         hobbies.$(byText(value)).click();
         return this;
     }
 
+    @Step("Выбор фотографии {value} в поле 'image'")
     public RegistrationPage setImage(String value){
         image.uploadFromClasspath(value);
         return this;
     }
 
+    @Step("Заполнение текущего адреса {value} в поле 'current address'")
     public RegistrationPage setCurrentAddress(String value){
         currentAddress.setValue(value);
         return this;
     }
 
+    @Step("Выбор штата {value} в поле 'state'")
     public RegistrationPage setState(String value){
         $("#state").click();
         state.$(byText(value)).click();
         return this;
     }
 
+    @Step("Выбор города {value} в поле 'city'")
     public RegistrationPage setCity(String value){
         $("#city").click();
         city.$(byText(value)).click();
         return this;
     }
 
-    public void submit(){
+    @Step("Нажатие на 'submit' для подтверждение регистрации")
+    public RegistrationPage submit(){
         submitButton.click();
+        return this;
     }
 }

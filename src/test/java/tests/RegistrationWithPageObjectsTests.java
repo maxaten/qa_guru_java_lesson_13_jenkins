@@ -1,6 +1,6 @@
 package tests;
 
-
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -21,8 +21,10 @@ public class RegistrationWithPageObjectsTests extends TestBase {
 
 
     @Test
-    void fillForm(){
-        registrationPage.openPage()
+    @DisplayName("Заполнение всех полей в форме")
+    void fillFormTest(){
+        registrationPage
+                .openPage()
                 .checkTitle(title)
                 .deleteFooterAndAdd()
                 .setFirstName(genData.firstName)
@@ -52,13 +54,12 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                         .checkResult("Picture", genData.nameImage)
                         .checkResult("Address", genData.currentAddress)
                         .checkResult("State and City", genData.state + " " + genData.city);
-
-        System.out.println(genData.gender);
     }
 
 
     @Test
-    void fillingRequiredFields(){
+    @DisplayName("Заполнение обязательных полей")
+    void fillingRequiredFieldsTest(){
         registrationPage.openPage()
                 .checkTitle(title)
                 .deleteFooterAndAdd()
@@ -78,8 +79,9 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     }
 
 
-    @Test
-    void blankFieldsForm(){
+    @Test()
+    @DisplayName("Нуспешная регистрая. Заполнение пустых полей")
+    void blankFieldsFormTest(){
         registrationPage.openPage()
                 .setFirstName(genData.firstName)
                 .checkTitle(title)
