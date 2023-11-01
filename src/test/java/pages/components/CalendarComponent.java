@@ -10,11 +10,4 @@ public class CalendarComponent {
         $(".react-datepicker__year-select").selectOption(year);
         $(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)").click();
     }
-
-//    public static int getRandomInt(){
-//        int min = 1;
-//        int max = 31;
-//        return ThreadLocalRandom.current().nextInt(min, max + 1);
-//    }
-
 }
