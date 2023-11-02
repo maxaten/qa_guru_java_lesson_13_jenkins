@@ -26,6 +26,7 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
     }
 
+
     @AfterEach
     void addAttachments(){
         Attach.screenShotAs("Last Screenshot");
